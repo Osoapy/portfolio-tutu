@@ -1,91 +1,99 @@
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./HomePage.css";
+import Header from "../../components/header/Header";
+import Footer from "../../components/footer/Footer";
+
 import tutuIcon from "../../assets/tutuIcon.png";
-import instagramIcon from "../../assets/instagramIcon.png";
-import xIcon from "../../assets/xIcon.webp";
 
-import imagem1 from "../../assets/desenhos/1.jpg";
-import imagem2 from "../../assets/desenhos/2.png";
-import imagem3 from "../../assets/desenhos/3.jpg";
-import imagem4 from "../../assets/desenhos/4.jpg";
-import imagem5 from "../../assets/desenhos/5.jpg";
-import imagem6 from "../../assets/desenhos/6.png";
-import imagem7 from "../../assets/desenhos/7.jpg";
-import imagem8 from "../../assets/desenhos/8.png";
-import imagem9 from "../../assets/desenhos/9.jpg";
-import imagem10 from "../../assets/desenhos/10.jpg";
-import imagem11 from "../../assets/desenhos/11.jpg";
-import imagem12 from "../../assets/desenhos/12.jpg";
-
-const imagens = [
-  imagem1,
-  imagem2,
-  imagem3,
-  imagem4,
-  imagem5,
-  imagem6,
-  imagem7,
-  imagem8,
-  imagem9,
-  imagem10,
-  imagem11,
-  imagem12,
-];
-
-const tituloImagens = {
-  1: "",
-  2: "",
-  3: "",
-  4: "",
-  5: "",
-  6: "",
-  7: "",
-  8: "",
-  9: "",
-  10: "",
-  11: "",
-  12: "",
-};
+import IMAGENS from "../../utils/Images";
+import TITULOS from "../../utils/ImagesDescription";
 
 export default function HomePage() {
+  const [imagensCarregadas, setImagensCarregadas] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    let componenteMontado = true;
+
+    const carregarImagem = (src) =>
+      new Promise((resolve, reject) => {
+        const imagem = new Image();
+
+        imagem.src = src;
+
+        imagem.onload = async () => {
+          try {
+            // Aguarda também a imagem ser decodificada pelo navegador.
+            await imagem.decode?.();
+          } catch {
+            // Alguns navegadores podem não suportar decode().
+          }
+
+          resolve();
+        };
+
+        imagem.onerror = reject;
+      });
+
+    Promise.all(IMAGENS.map(carregarImagem))
+      .then(() => {
+        if (componenteMontado) {
+          setImagensCarregadas(true);
+        }
+      })
+      .catch((error) => {
+        console.error("Erro ao carregar as imagens:", error);
+
+        // Exibe a galeria mesmo se uma imagem falhar.
+        if (componenteMontado) {
+          setImagensCarregadas(true);
+        }
+      });
+
+    return () => {
+      componenteMontado = false;
+    };
+  }, []);
+
+  const shouldIRedirect = (index) => {
+    if (index === 3) {
+      navigate("/the-heart-deep-down");
+    }
+  };
 
   return (
     <>
-        <header id="top">
-            <div className="header-content">
-                <div>
-                    <h1>ANNY J. ART</h1>
-                </div>
-                <div className="header-icons">
-                    <p className="here">work</p>
-                    <p>contact</p>
-                    <div className="x-icon icon" onClick={() => navigate("/")}>
-                        <img src={xIcon} alt="X Icon" />
-                    </div>
-                    <div className="instagram-icon icon" onClick={() => window.open("https://www.instagram.com/annyj.art/", "_blank")}>
-                        <img src={instagramIcon} alt="Instagram Icon" />
-                    </div>
-                </div>
-            </div>
-        </header>
-        <main>
-            <div className="tutu-hero">
-                <img src={tutuIcon} alt="Tutu Icon" />
-            </div>
+      <Header location="work" />
+      
+      <main>
+          <div className="tutu-hero">
+              <img src={tutuIcon} alt="Tutu Icon" />
+          </div>
 
-            <div className="tutu-grid">
-                {imagens.map((imagem, index) => (
-                    <div key={index}>
-                        <p className="tutu-grid-title">Imagem {index + 1}</p>
-                        <img className={`${index}`} src={imagem} alt={`Imagem ${index + 1}`} />
-                    </div>
-                ))}
-            </div>
-        </main>
-        <footer>
-            <a href="#top">↑ back to the top</a>
-        </footer>
+          {!imagensCarregadas ? (
+              <div className="gallery-loading">
+                  <p>Loading artworks...</p>
+              </div>
+              ) : (
+              <div className="tutu-grid">
+                  {IMAGENS.map((imagem, index) => (
+                  <div className={"tutu-grid-item" + (index === 3 ? " mouse-pointer" : "")} key={imagem} onClick={() => shouldIRedirect(index)}>
+                      <p className="tutu-grid-title">
+                      {TITULOS[index]}
+                      </p>
+
+                      <img
+                      src={imagem}
+                      alt={TITULOS[index]}
+                      loading="eager"
+                      />
+                  </div>
+                  ))}
+              </div>
+          )}
+      </main>
+      <Footer />
     </>
   );
 }

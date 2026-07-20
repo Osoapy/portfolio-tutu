@@ -1,0 +1,53 @@
+header {
+    height: fit-content;
+
+    .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-left: 4rem;
+        padding-right: 4rem;
+        padding-top: 2rem;
+        padding-bottom: 1rem;
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 500;
+        }
+
+        .header-icons {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+
+            p {
+                font-family: "Be Vietnam Pro", sans-serif;
+            }
+            p:hover {
+                cursor: pointer;
+            }
+
+            .here {
+                font-weight: bold;
+                text-decoration: underline;
+            }
+
+            .icon {
+                height: 1rem;
+
+                img {
+                    height: 100%;
+                    width: auto;
+                    cursor: pointer;
+                }
+            }
+            .icon:hover {
+                cursor: pointer;
+            }
+
+            .instagram-icon {
+                height: 1.12rem;
+            }
+        }
+    }
+}
