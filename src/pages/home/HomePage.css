@@ -70,3 +70,63 @@ main {
         }
     }
 }
+
+@media (max-width: 900px) {
+    main {
+        .tutu-hero {
+            height: 32vh;
+            margin-bottom: 8vh;
+        }
+
+        .tutu-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+
+            .tutu-grid-item {
+                height: 38vh;
+
+                .tutu-grid-title {
+                    width: 85%;
+                    font-size: 1.5rem;
+                    text-align: center;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    main {
+        .tutu-hero {
+            height: auto;
+            margin: 1rem 0 3rem;
+            padding: 0 1.5rem;
+
+            img {
+                width: min(100%, 22rem);
+                height: auto;
+            }
+        }
+
+        .tutu-grid {
+            grid-template-columns: 1fr;
+            gap: .25rem;
+            padding: 0 .25rem;
+
+            .tutu-grid-item {
+                height: min(65vh, 32rem);
+
+                .tutu-grid-title {
+                    top: auto;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                    padding: 2.5rem 1rem 1rem;
+                    background: linear-gradient(transparent, rgb(0 0 0 / 70%));
+                    font-size: 1.25rem;
+                    opacity: 1;
+                    transform: none;
+                }
+            }
+        }
+    }
+}

@@ -1,6 +1,7 @@
 footer {
-    height: 15vh;
+    min-height: 15vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 2rem 1rem;
 }

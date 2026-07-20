@@ -9,3 +9,18 @@
     scroll-behavior: smooth;
     scrollbar-width: thin;
 }
+
+html,
+body,
+#root {
+    min-width: 0;
+    min-height: 100%;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+}

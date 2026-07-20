@@ -6,7 +6,8 @@
     background-color: #4e8bbe;
 
     img {
-        height: 100%;
+        max-height: 100%;
+        max-width: 30%;
         background-color: transparent;
     }
 }
@@ -17,6 +18,7 @@
     align-items: center;
     padding: 2rem 4rem;
     height: 75vh;
+    gap: 5%;
 
     img {
         height: 100%;
@@ -54,5 +56,82 @@
         color: white;
         font-size: 1.2rem;
         margin-bottom: 0.5rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .contact-header {
+        height: 26vh;
+    }
+
+    .contact-section {
+        height: auto;
+        gap: 2rem;
+        padding: 3rem 2rem;
+
+        img {
+            width: min(42%, 22rem);
+            height: auto;
+        }
+    }
+
+    .contact-text {
+        margin: 2rem;
+    }
+
+    .contact-socials {
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .contact-header {
+        height: 20vh;
+        overflow: hidden;
+
+        img {
+            width: 33.333%;
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+
+    .contact-section {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1.5rem;
+        padding: 2rem 1.25rem;
+
+        img {
+            width: 100%;
+            max-height: 70vh;
+            object-fit: cover;
+        }
+
+        p {
+            max-width: none;
+            font-size: 1rem;
+        }
+    }
+
+    .contact-text {
+        margin: 1rem 1.25rem 2rem;
+
+        h2 {
+            font-size: clamp(2rem, 11vw, 2.7rem);
+        }
+
+        p {
+            font-size: 1rem;
+        }
+    }
+
+    .contact-socials {
+        padding: 1.5rem 1.25rem;
+
+        p, b {
+            font-size: 1rem;
+            overflow-wrap: anywhere;
+        }
     }
 }

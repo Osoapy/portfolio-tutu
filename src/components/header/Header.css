@@ -51,3 +51,36 @@ header {
         }
     }
 }
+
+@media (max-width: 900px) {
+    header .header-content {
+        padding: 1.5rem 2rem 1rem;
+
+        h1 {
+            font-size: 2rem;
+        }
+
+        .header-icons {
+            gap: 1.25rem;
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    header .header-content {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1.25rem 1rem;
+
+        h1 {
+            font-size: clamp(1.75rem, 9vw, 2.25rem);
+            text-align: center;
+        }
+
+        .header-icons {
+            width: 100%;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+    }
+}

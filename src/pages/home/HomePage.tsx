@@ -16,8 +16,8 @@ export default function HomePage() {
   useEffect(() => {
     let componenteMontado = true;
 
-    const carregarImagem = (src) =>
-      new Promise((resolve, reject) => {
+    const carregarImagem = (src: string) =>
+      new Promise<void>((resolve, reject) => {
         const imagem = new Image();
 
         imagem.src = src;
@@ -56,7 +56,7 @@ export default function HomePage() {
     };
   }, []);
 
-  const shouldIRedirect = (index) => {
+  const shouldIRedirect = (index: number) => {
     if (index === 3) {
       navigate("/the-heart-deep-down");
     }
