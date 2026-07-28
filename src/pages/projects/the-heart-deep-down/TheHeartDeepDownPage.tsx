@@ -1,30 +1,25 @@
 import Footer from "../../../components/footer/Footer";
 import Header from "../../../components/header/Header";
+import ArtworkCarousel from "../../../components/artwork-carousel/ArtworkCarousel";
+import ThanksForWatching from "../../../components/thanks-for-watching/ThanksForWatching";
 import "./TheHeartDeepDownPage.css";
 
 import IMAGENS from "../../../utils/Images";
 import TITULOS from "../../../utils/ImagesDescription";
+import { isHeartDeepDown } from "../../../utils/ArtworkHelpers";
 import bookCover from "../../../assets/mockups/4capaDeLivro.png"
 import cabecaSemiLado from "../../../assets/tutuHead2.png"
 
+const heartDeepDownIndex = TITULOS.findIndex(isHeartDeepDown);
+const heartDeepDownImage = IMAGENS[heartDeepDownIndex];
+
 export default function TheHeartDeepDownPage() {
-    const horaEm24Horas = new Date().getHours();
-    const horaEm12Horas = horaEm24Horas === 0
-        ? 0
-        : ((horaEm24Horas - 1) % 12) + 1;
-
-    const primeiroDesenho = horaEm12Horas <= 1 ? 1 : horaEm12Horas;
-    const indicesDosDesenhos = Array.from(
-        { length: 3 },
-        (_, posicao) => (primeiroDesenho - 1 + posicao) % IMAGENS.length,
-    );
-
     return (
         <>
             <Header location="work" />
             <main>
                 <div className="first-ilustration-container">
-                    <img src={IMAGENS[3]} className="first-ilustration"></img>
+                    <img src={heartDeepDownImage} className="first-ilustration" alt={TITULOS[heartDeepDownIndex]} />
                 </div>
                 
                 <p className="description">
@@ -36,18 +31,18 @@ export default function TheHeartDeepDownPage() {
                 </p>
 
                 <div className="main-artwork-container">
-                    <img src={IMAGENS[3]}></img>
+                    <img src={heartDeepDownImage} alt={TITULOS[heartDeepDownIndex]} />
                 </div>
 
                 <div className="random-crop">
                     <div className="random-crop-1">
-                        <img src={IMAGENS[3]}></img>
+                        <img src={heartDeepDownImage} alt="" />
                     </div>
                     <div className="random-crop-2">
-                        <img src={IMAGENS[3]}></img>
+                        <img src={heartDeepDownImage} alt="" />
                     </div>
                     <div className="random-crop-3">
-                        <img src={IMAGENS[3]}></img>
+                        <img src={heartDeepDownImage} alt="" />
                     </div>
                 </div>
 
@@ -55,30 +50,14 @@ export default function TheHeartDeepDownPage() {
                     <img src={bookCover}></img>
                 </div>
 
-                <div className="thx-for-watching">
-                    <h1>THANKS FOR WATCHING!</h1>
-                </div>
+                <ThanksForWatching />
 
                 <div className="you-may-also-like">
                     <div className="thumbnail">
                         <p>Don't go so quickly! You may also like</p>
                         <img src={cabecaSemiLado}></img>
                     </div>
-                    <div className="small-carousel">
-                        {indicesDosDesenhos.map((indice) => (
-                            <div className="tutu-grid-item" key={IMAGENS[indice]}>
-                                <p className="tutu-grid-title">
-                                    {TITULOS[indice]}
-                                </p>
-
-                                <img
-                                    src={IMAGENS[indice]}
-                                    alt={TITULOS[indice]}
-                                    loading="eager"
-                                />
-                            </div>
-                        ))}
-                    </div>
+                    <ArtworkCarousel currentArtworkIndex={heartDeepDownIndex} />
                 </div>
 
                 <div className="three-other-drawings"></div>

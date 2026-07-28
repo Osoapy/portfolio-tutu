@@ -8,6 +8,7 @@ import tutuIcon from "../../assets/tutuIcon.png";
 
 import IMAGENS from "../../utils/Images";
 import TITULOS from "../../utils/ImagesDescription";
+import { isHeartDeepDown } from "../../utils/ArtworkHelpers";
 
 export default function HomePage() {
   const [imagensCarregadas, setImagensCarregadas] = useState(false);
@@ -56,9 +57,18 @@ export default function HomePage() {
     };
   }, []);
 
-  const shouldIRedirect = (index: number) => {
-    if (index === 3) {
+  const shouldIRedirect = (index: number, titulo: string) => {
+    if (isHeartDeepDown(titulo)) {
       navigate("/the-heart-deep-down");
+    }
+    else {
+      navigate(`/artwork?obra=${index}`, {
+        state: {
+          titulo: TITULOS[index],
+          imagem: IMAGENS[index],
+          index,
+        },
+      });
     }
   };
 
@@ -78,7 +88,7 @@ export default function HomePage() {
               ) : (
               <div className="tutu-grid">
                   {IMAGENS.map((imagem, index) => (
-                  <div className={"tutu-grid-item" + (index === 3 ? " mouse-pointer" : "")} key={imagem} onClick={() => shouldIRedirect(index)}>
+                  <div className="tutu-grid-item mouse-pointer" key={imagem} onClick={() => shouldIRedirect(index, TITULOS[index])}>
                       <p className="tutu-grid-title">
                       {TITULOS[index]}
                       </p>

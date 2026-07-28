@@ -4,6 +4,7 @@ import "./App.css";
 import HomePage from "./pages/home/HomePage";
 import ContactPage from "./pages/contact/ContactPage";
 import TheHeartDeepDownPage from "./pages/projects/the-heart-deep-down/TheHeartDeepDownPage";
+import Artwork from "./pages/projects/artwork/Artwork";
 
 export default function App() {
   return (
@@ -11,6 +12,7 @@ export default function App() {
       <Route path="/" element={<HomePage />} />
       <Route path="/contato" element={<ContactPage />} />
       <Route path="/the-heart-deep-down" element={<TheHeartDeepDownPage />} />
+      <Route path="/artwork" element={<Artwork />} />
     </Routes>
   );
 }

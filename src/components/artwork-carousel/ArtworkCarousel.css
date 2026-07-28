@@ -1,0 +1,64 @@
+.artwork-carousel {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: .25rem;
+}
+
+.artwork-carousel-card {
+    position: relative;
+    height: 42vh;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+    cursor: pointer;
+}
+
+.artwork-carousel-card span {
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    padding: 1rem;
+    color: white;
+    background: rgb(0 0 0 / 48%);
+    font-size: 1.5rem;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity .25s ease;
+}
+
+.artwork-carousel-card img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    transition: transform .5s ease;
+}
+
+.artwork-carousel-card:hover span,
+.artwork-carousel-card:focus-visible span {
+    opacity: 1;
+}
+
+.artwork-carousel-card:hover img,
+.artwork-carousel-card:focus-visible img {
+    transform: scale(1.06);
+}
+
+@media (max-width: 700px) {
+    .artwork-carousel {
+        grid-template-columns: 1fr;
+    }
+
+    .artwork-carousel-card {
+        height: 45vh;
+    }
+
+    .artwork-carousel-card span {
+        align-items: end;
+        padding: 3rem 1rem 1rem;
+        background: linear-gradient(transparent 45%, rgb(0 0 0 / 72%));
+        opacity: 1;
+    }
+}

@@ -1,0 +1,23 @@
+.thx-for-watching {
+    padding: 2.7rem;
+    background-color: #4e8bbe;
+}
+
+.thx-for-watching h2 {
+    margin: 0;
+    color: white;
+    background-color: transparent;
+    font-size: 3rem;
+    font-weight: 400;
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    .thx-for-watching {
+        padding: 2rem 1rem;
+    }
+
+    .thx-for-watching h2 {
+        font-size: clamp(1.75rem, 9vw, 2.5rem);
+    }
+}
