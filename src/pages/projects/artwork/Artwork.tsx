@@ -5,7 +5,7 @@ import Footer from "../../../components/footer/Footer";
 import Header from "../../../components/header/Header";
 import IMAGENS from "../../../utils/Images";
 import TITULOS from "../../../utils/ImagesDescription";
-import { isHeartDeepDown, isNymphsArtwork } from "../../../utils/ArtworkHelpers";
+import { isHeartDeepDown, isAvatarArtwork } from "../../../utils/ArtworkHelpers";
 import "./Artwork.css";
 
 type ArtworkState = {
@@ -45,7 +45,7 @@ export default function Artwork() {
                 </section>
 
                 <section
-                    className={`artwork-zooms${isNymphsArtwork(titulo) ? " artwork-zooms--top" : ""}`}
+                    className={`artwork-zooms${isAvatarArtwork(titulo) ? " artwork-zooms--top" : ""}`}
                     aria-label={`Details from ${titulo}`}
                 >
                     <div><img src={imagem} alt="" /></div>

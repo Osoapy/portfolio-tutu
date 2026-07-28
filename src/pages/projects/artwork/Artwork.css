@@ -94,7 +94,7 @@
 }
 
 .artwork-zooms--top div:nth-child(1) img {
-    object-position: left top;
+    object-position: left bottom;
     transform-origin: left top;
 }
 
@@ -104,8 +104,8 @@
 }
 
 .artwork-zooms--top div:nth-child(3) img {
-    object-position: right top;
-    transform-origin: right top;
+    object-position: center center;
+    transform-origin: center center;
 }
 
 .artwork-more {
