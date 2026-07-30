@@ -1,0 +1,36 @@
+.recommendation-heading {
+    min-height: 13.5vh;
+    display: flex;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+.recommendation-heading p {
+    margin-right: 25px;
+    font-size: 1.75rem;
+}
+
+.recommendation-heading img {
+    height: 5.5rem;
+    width: auto;
+}
+
+@media (max-width: 600px) {
+    .recommendation-heading {
+        min-height: 7rem;
+        padding: 1rem 1.25rem;
+    }
+
+    .recommendation-heading p {
+        flex: 1;
+        margin-right: .75rem;
+        font-size: 1.25rem;
+        line-height: 1.2;
+    }
+
+    .recommendation-heading img {
+        width: 4.5rem;
+        height: auto;
+        flex-shrink: 0;
+    }
+}

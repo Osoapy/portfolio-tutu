@@ -9,10 +9,12 @@ import tutuIcon from "../../assets/tutuIcon.png";
 import IMAGENS from "../../utils/Images";
 import TITULOS from "../../utils/ImagesDescription";
 import { isHeartDeepDown } from "../../utils/ArtworkHelpers";
+import { useLanguage } from "../../i18n/LanguageContext";
 
 export default function HomePage() {
   const [imagensCarregadas, setImagensCarregadas] = useState(false);
   const navigate = useNavigate();
+  const { text } = useLanguage();
 
   useEffect(() => {
     let componenteMontado = true;
@@ -83,19 +85,19 @@ export default function HomePage() {
 
           {!imagensCarregadas ? (
               <div className="gallery-loading">
-                  <p>Loading artworks...</p>
+                  <p>{text.loading}</p>
               </div>
               ) : (
               <div className="tutu-grid">
                   {IMAGENS.map((imagem, index) => (
                   <div className="tutu-grid-item mouse-pointer" key={imagem} onClick={() => shouldIRedirect(index, TITULOS[index])}>
                       <p className="tutu-grid-title">
-                      {TITULOS[index]}
+                      {text.artworkTitles[index]}
                       </p>
 
                       <img
                       src={imagem}
-                      alt={TITULOS[index]}
+                      alt={text.artworkTitles[index]}
                       loading="eager"
                       />
                   </div>

@@ -4,6 +4,7 @@ import IMAGENS from "../../utils/Images";
 import TITULOS from "../../utils/ImagesDescription";
 import { isHeartDeepDown } from "../../utils/ArtworkHelpers";
 import "./ArtworkCarousel.css";
+import { useLanguage } from "../../i18n/LanguageContext";
 
 type ArtworkCarouselProps = {
     currentArtworkIndex: number;
@@ -15,6 +16,7 @@ export default function ArtworkCarousel({
     count = 3,
 }: ArtworkCarouselProps) {
     const navigate = useNavigate();
+    const { text } = useLanguage();
     const indexes = useMemo(() => {
         const availableIndexes = IMAGENS
             .map((_, index) => index)
@@ -54,8 +56,8 @@ export default function ArtworkCarousel({
                     key={`${IMAGENS[index]}-${index}`}
                     onClick={() => openArtwork(index)}
                 >
-                    <span>{TITULOS[index]}</span>
-                    <img src={IMAGENS[index]} alt={TITULOS[index]} />
+                    <span>{text.artworkTitles[index]}</span>
+                    <img src={IMAGENS[index]} alt={text.artworkTitles[index]} />
                 </button>
             ))}
         </div>

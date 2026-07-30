@@ -1,5 +1,6 @@
 import { useLocation, useSearchParams } from "react-router-dom";
 import ArtworkCarousel from "../../../components/artwork-carousel/ArtworkCarousel";
+import RecommendationHeading from "../../../components/recommendation-heading/RecommendationHeading";
 import ThanksForWatching from "../../../components/thanks-for-watching/ThanksForWatching";
 import Footer from "../../../components/footer/Footer";
 import Header from "../../../components/header/Header";
@@ -7,6 +8,7 @@ import IMAGENS from "../../../utils/Images";
 import TITULOS from "../../../utils/ImagesDescription";
 import { isHeartDeepDown, isAvatarArtwork } from "../../../utils/ArtworkHelpers";
 import "./Artwork.css";
+import { useLanguage } from "../../../i18n/LanguageContext";
 
 type ArtworkState = {
     titulo?: string;
@@ -18,6 +20,7 @@ export default function Artwork() {
     const location = useLocation();
     const [searchParams] = useSearchParams();
     const state = location.state as ArtworkState | null;
+    const { text } = useLanguage();
 
     const queryIndex = Number(searchParams.get("obra"));
     const fallbackIndex = Number.isInteger(queryIndex)
@@ -27,7 +30,7 @@ export default function Artwork() {
         ? queryIndex
         : 0;
     const artworkIndex = state?.index ?? fallbackIndex;
-    const titulo = state?.titulo ?? TITULOS[artworkIndex];
+    const titulo = text.artworkTitles[artworkIndex];
     const imagem = state?.imagem ?? IMAGENS[artworkIndex];
 
     return (
@@ -40,13 +43,13 @@ export default function Artwork() {
                 </section>
 
                 <section className="artwork-details">
-                    <p>This piece shows a bit of my inner world.</p>
-                    <img src={imagem} alt={`Full artwork: ${titulo}`} />
+                    <p>{text.artwork.description}</p>
+                    <img src={imagem} alt={`${text.artwork.fullAlt}${titulo}`} />
                 </section>
 
                 <section
                     className={`artwork-zooms${isAvatarArtwork(titulo) ? " artwork-zooms--top" : ""}`}
-                    aria-label={`Details from ${titulo}`}
+                    aria-label={`${text.artwork.detailsAlt}${titulo}`}
                 >
                     <div><img src={imagem} alt="" /></div>
                     <div><img src={imagem} alt="" /></div>
@@ -56,7 +59,7 @@ export default function Artwork() {
                 <ThanksForWatching />
 
                 <section className="artwork-more">
-                    <h2>You may also like</h2>
+                    <RecommendationHeading />
                     <ArtworkCarousel currentArtworkIndex={artworkIndex} />
                 </section>
             </main>

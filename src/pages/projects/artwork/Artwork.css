@@ -4,8 +4,8 @@
 
 .artwork-hero {
     position: relative;
-    height: 58vh;
-    min-height: 26rem;
+    height: 42vh;
+    min-height: 20rem;
     overflow: hidden;
     background: #101010;
 }
@@ -112,13 +112,6 @@
     padding: 3rem .25rem .25rem;
 }
 
-.artwork-more h2 {
-    margin: 0 0 2rem;
-    text-align: center;
-    font-size: clamp(1.7rem, 3vw, 2.5rem);
-    font-weight: 400;
-}
-
 @media (max-width: 900px) {
     .artwork-zooms {
         height: 32vh;
@@ -127,14 +120,15 @@
 
 @media (max-width: 700px) {
     .artwork-hero {
-        height: 50vh;
-        min-height: 22rem;
+        height: 22vh;
+        min-height: 10rem;
     }
 
     .artwork-hero h1 {
-        bottom: 2rem;
+        bottom: 1.25rem;
         left: 1.25rem;
         max-width: calc(100% - 2.5rem);
+        font-size: clamp(1.65rem, 8vw, 2.5rem);
     }
 
     .artwork-details {
@@ -147,7 +141,11 @@
     }
 
     .artwork-zooms div {
-        height: 30vh;
+        height: 18vh;
+    }
+
+    .artwork-zooms img {
+        transform: scale(1.35);
     }
 
 }

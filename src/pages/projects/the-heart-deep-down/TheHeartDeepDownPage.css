@@ -79,25 +79,6 @@
     }
 }
 
-.you-may-also-like {
-    .thumbnail {
-        height: 13.5vh;
-        display: flex;
-        align-items: center;
-        padding: 0rem 2rem;
-
-        p {
-            font-size: 1.75rem;
-            margin-right: 25px;
-        }
-
-        img {
-            height: 66%;
-        }
-    }
-
-}
-
 @media (max-width: 900px) {
     .first-ilustration-container {
         height: 34vh;
@@ -164,25 +145,4 @@
         width: 100%;
     }
 
-    .you-may-also-like {
-        .thumbnail {
-            height: auto;
-            min-height: 7rem;
-            padding: 1rem 1.25rem;
-
-            p {
-                flex: 1;
-                margin-right: .75rem;
-                font-size: 1.25rem;
-                line-height: 1.2;
-            }
-
-            img {
-                width: 4.5rem;
-                height: auto;
-                flex-shrink: 0;
-            }
-        }
-
-    }
 }
