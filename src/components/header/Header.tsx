@@ -1,5 +1,5 @@
 import "./Header.css";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import instagramIcon from "../../assets/instagramIcon.png";
 import xIcon from "../../assets/xIcon.webp";
@@ -18,16 +18,16 @@ export default function Header({ location }: HeaderProps) {
     return (
         <header id="top">
             <div className="header-content">
-                <div>
+                <Link className="header-brand" to="/" viewTransition aria-label="Anny J Art — início">
                     <h1>ANNY J. ART</h1>
-                </div>
+                </Link>
 
                 <div className="header-icons">
-                    <p className={location === "work" ? "here" : ""} onClick={() => navigate("/")}>
+                    <p className={location === "work" ? "here" : ""} onClick={() => navigate("/", { viewTransition: true })}>
                         {text.nav.work}
                     </p>
 
-                    <p className={location === "contact" ? "here" : ""} onClick={() => navigate("/contato")}>
+                    <p className={location === "contact" ? "here" : ""} onClick={() => navigate("/contato", { viewTransition: true })}>
                         {text.nav.contact}
                     </p>
 

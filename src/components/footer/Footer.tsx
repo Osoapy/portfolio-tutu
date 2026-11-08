@@ -6,7 +6,7 @@ export default function Footer() {
 
     return (
         <footer>
-            <a href="#top">{text.backToTop}</a>
+            <a className="back-to-top" href="#top">{text.backToTop}</a>
         </footer>
     );
 }

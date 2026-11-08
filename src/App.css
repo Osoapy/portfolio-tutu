@@ -13,6 +13,50 @@ html {
     scroll-behavior: smooth;
 }
 
+::view-transition-old(root) {
+    animation: route-fade-out 160ms ease-in both;
+}
+
+::view-transition-new(root) {
+    animation: route-fade-in 280ms ease-out both;
+}
+
+@keyframes route-fade-out {
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes route-fade-in {
+    from {
+        opacity: 0;
+    }
+}
+
+.home-page,
+.contact-page {
+    animation: page-enter 360ms cubic-bezier(.2, .8, .2, 1) both;
+}
+
+@keyframes page-enter {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+        animation-duration: 1ms;
+    }
+
+    .home-page,
+    .contact-page {
+        animation: none;
+    }
+}
+
 html,
 body,
 #root {

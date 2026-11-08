@@ -5,3 +5,40 @@ footer {
     justify-content: center;
     padding: 2rem 1rem;
 }
+
+.back-to-top {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.75rem;
+    padding: .65rem 1.25rem;
+    border: 1px solid rgb(9 35 115 / 35%);
+    border-radius: 999px;
+    background: white;
+    color: #092373;
+    font-weight: 500;
+    text-decoration: none;
+    transition:
+        background-color .2s ease,
+        color .2s ease,
+        transform .2s ease,
+        box-shadow .2s ease;
+}
+
+.back-to-top:hover {
+    transform: translateY(-2px);
+    background: #092373;
+    color: white;
+    box-shadow: 0 4px 12px rgb(9 35 115 / 18%);
+}
+
+.back-to-top:focus-visible {
+    outline: 2px solid #092373;
+    outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .back-to-top {
+        transition: none;
+    }
+}

@@ -41,6 +41,7 @@ export default function ArtworkCarousel({
                     imagem: IMAGENS[index],
                     index,
                 },
+                viewTransition: true,
             });
         }
 
@@ -57,7 +58,7 @@ export default function ArtworkCarousel({
                     onClick={() => openArtwork(index)}
                 >
                     <span>{text.artworkTitles[index]}</span>
-                    <img src={IMAGENS[index]} alt={text.artworkTitles[index]} />
+                    <img src={IMAGENS[index]} alt={text.artworkTitles[index]} loading="lazy" decoding="async" />
                 </button>
             ))}
         </div>

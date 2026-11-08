@@ -1,29 +1,31 @@
 .recommendation-heading {
-    min-height: 13.5vh;
+    min-height: 11vh;
     display: flex;
     align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
     padding: 0 2rem;
 }
 
 .recommendation-heading p {
-    margin-right: 25px;
+    margin: 0;
     font-size: 1.75rem;
 }
 
 .recommendation-heading img {
     height: 5.5rem;
     width: auto;
+    transform: scaleX(-1);
 }
 
 @media (max-width: 600px) {
     .recommendation-heading {
-        min-height: 7rem;
-        padding: 1rem 1.25rem;
+        min-height: 5.5rem;
+        padding: .5rem 1.25rem;
     }
 
     .recommendation-heading p {
         flex: 1;
-        margin-right: .75rem;
         font-size: 1.25rem;
         line-height: 1.2;
     }

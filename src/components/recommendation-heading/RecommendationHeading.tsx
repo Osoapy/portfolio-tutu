@@ -7,8 +7,8 @@ export default function RecommendationHeading() {
 
     return (
         <div className="recommendation-heading">
-            <p>{text.heart.more}</p>
             <img src={cabecaSemiLado} alt="" />
+            <p>{text.heart.more}</p>
         </div>
     );
 }

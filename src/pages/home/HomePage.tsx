@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./HomePage.css";
 import Header from "../../components/header/Header";
@@ -12,52 +11,8 @@ import { isHeartDeepDown } from "../../utils/ArtworkHelpers";
 import { useLanguage } from "../../i18n/LanguageContext";
 
 export default function HomePage() {
-  const [imagensCarregadas, setImagensCarregadas] = useState(false);
   const navigate = useNavigate();
   const { text } = useLanguage();
-
-  useEffect(() => {
-    let componenteMontado = true;
-
-    const carregarImagem = (src: string) =>
-      new Promise<void>((resolve, reject) => {
-        const imagem = new Image();
-
-        imagem.src = src;
-
-        imagem.onload = async () => {
-          try {
-            // Aguarda também a imagem ser decodificada pelo navegador.
-            await imagem.decode?.();
-          } catch {
-            // Alguns navegadores podem não suportar decode().
-          }
-
-          resolve();
-        };
-
-        imagem.onerror = reject;
-      });
-
-    Promise.all(IMAGENS.map(carregarImagem))
-      .then(() => {
-        if (componenteMontado) {
-          setImagensCarregadas(true);
-        }
-      })
-      .catch((error) => {
-        console.error("Erro ao carregar as imagens:", error);
-
-        // Exibe a galeria mesmo se uma imagem falhar.
-        if (componenteMontado) {
-          setImagensCarregadas(true);
-        }
-      });
-
-    return () => {
-      componenteMontado = false;
-    };
-  }, []);
 
   const shouldIRedirect = (index: number, titulo: string) => {
     if (isHeartDeepDown(titulo)) {
@@ -70,6 +25,7 @@ export default function HomePage() {
           imagem: IMAGENS[index],
           index,
         },
+        viewTransition: true,
       });
     }
   };
@@ -78,18 +34,13 @@ export default function HomePage() {
     <>
       <Header location="work" />
       
-      <main>
+      <main className="home-page">
           <div className="tutu-hero">
               <img src={tutuIcon} alt="Tutu Icon" />
           </div>
 
-          {!imagensCarregadas ? (
-              <div className="gallery-loading">
-                  <p>{text.loading}</p>
-              </div>
-              ) : (
-              <div className="tutu-grid">
-                  {IMAGENS.map((imagem, index) => (
+          <div className="tutu-grid" id="works">
+              {IMAGENS.map((imagem, index) => (
                   <div className="tutu-grid-item mouse-pointer" key={imagem} onClick={() => shouldIRedirect(index, TITULOS[index])}>
                       <p className="tutu-grid-title">
                       {text.artworkTitles[index]}
@@ -98,12 +49,13 @@ export default function HomePage() {
                       <img
                       src={imagem}
                       alt={text.artworkTitles[index]}
-                      loading="eager"
+                      loading="lazy"
+                      decoding="async"
+                      style={{ viewTransitionName: `artwork-${index}` }}
                       />
                   </div>
-                  ))}
-              </div>
-          )}
+              ))}
+          </div>
       </main>
       <Footer />
     </>

@@ -42,10 +42,10 @@ const translations = {
         },
         heart: {
             description: "“O coração nas profundezas” é um projeto pessoal que conta a história de uma princesa dos oceanos mais profundos, destinada a proteger a pedra sagrada do reino até o fim de seus dias. Porém, somente ao renunciar ao seu dever ela descobrirá a verdade: esta não é uma pedra qualquer. Uma história sobre dever e liberdade que pergunta: o que você escolheria?",
-            more: "Não vá embora tão rápido! Você também pode gostar",
+            more: "Não vá agora! Você também pode gostar de:",
             bookCoverAlt: "Aplicação da ilustração em uma capa de livro",
         },
-        thanks: "OBRIGADA POR ASSISTIR!", backToTop: "↑ voltar ao topo",
+        thanks: "OBRIGADA POR ASSISTIR!", backToTop: "Voltar ao topo",
         artworkTitles: artworkTitles.pt,
     },
     en: {
@@ -70,10 +70,10 @@ const translations = {
         },
         heart: {
             description: "“The Heart Deep Down” is a personal project that tells the story of a princess from the deepest oceans, destined to guard the kingdom's sacred stone until the end of her days. Yet, only by renouncing her duty will she uncover the truth—that this is no ordinary stone. A tale of duty and freedom, it asks: what would you choose?",
-            more: "Don't go so quickly! You may also like",
+            more: "Don't go so quickly! You may also like:",
             bookCoverAlt: "Artwork applied to a book cover",
         },
-        thanks: "THANKS FOR WATCHING!", backToTop: "↑ back to the top",
+        thanks: "THANKS FOR WATCHING!", backToTop: "Back to top",
         artworkTitles: artworkTitles.en,
     },
 };

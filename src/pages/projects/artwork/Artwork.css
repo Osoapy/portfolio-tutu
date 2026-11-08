@@ -109,7 +109,41 @@
 }
 
 .artwork-more {
-    padding: 3rem .25rem .25rem;
+    padding: .75rem .25rem .25rem;
+}
+
+::view-transition-group(artwork-0),
+::view-transition-group(artwork-1),
+::view-transition-group(artwork-2),
+::view-transition-group(artwork-3),
+::view-transition-group(artwork-4),
+::view-transition-group(artwork-5),
+::view-transition-group(artwork-6),
+::view-transition-group(artwork-7),
+::view-transition-group(artwork-8),
+::view-transition-group(artwork-9),
+::view-transition-group(artwork-10),
+::view-transition-group(artwork-11) {
+    z-index: 2;
+    animation-duration: 700ms;
+    animation-timing-function: cubic-bezier(.2, .8, .2, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    ::view-transition-group(artwork-0),
+    ::view-transition-group(artwork-1),
+    ::view-transition-group(artwork-2),
+    ::view-transition-group(artwork-3),
+    ::view-transition-group(artwork-4),
+    ::view-transition-group(artwork-5),
+    ::view-transition-group(artwork-6),
+    ::view-transition-group(artwork-7),
+    ::view-transition-group(artwork-8),
+    ::view-transition-group(artwork-9),
+    ::view-transition-group(artwork-10),
+    ::view-transition-group(artwork-11) {
+        animation-duration: 1ms;
+    }
 }
 
 @media (max-width: 900px) {

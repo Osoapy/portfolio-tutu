@@ -13,7 +13,7 @@ export default function ContactPage() {
     return (
         <>
             <Header location="contact" />
-            <main>
+            <main className="contact-page">
                 <header className="contact-header">
                     <img src={tutuHead1} alt="" />
                     <img src={tutuHead2} alt="" />
@@ -36,7 +36,10 @@ export default function ContactPage() {
                 </div>
                 <div className="contact-socials">
                     <p><b>{text.contact.email}</b> annyleticiajnm@gmail.com</p>
-                    <p><b>{text.contact.socials}</b> @TutuArte</p>
+                    <p>
+                        <b>{text.contact.socials}</b>{" "}
+                        X - AnnyTutu_Arts, Instagram - tutu_ilustra
+                    </p>
                 </div>
             </main>
             <Footer />

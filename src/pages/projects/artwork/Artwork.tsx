@@ -32,28 +32,31 @@ export default function Artwork() {
     const artworkIndex = state?.index ?? fallbackIndex;
     const titulo = text.artworkTitles[artworkIndex];
     const imagem = state?.imagem ?? IMAGENS[artworkIndex];
-
     return (
         <>
             <Header location="work" />
             <main className="artwork-page">
                 <section className="artwork-hero">
                     <h1>{titulo}</h1>
-                    <img src={imagem} alt={titulo} />
+                    <img
+                        src={imagem}
+                        alt={titulo}
+                        style={{ viewTransitionName: `artwork-${artworkIndex}` }}
+                    />
                 </section>
 
                 <section className="artwork-details">
                     <p>{text.artwork.description}</p>
-                    <img src={imagem} alt={`${text.artwork.fullAlt}${titulo}`} />
+                    <img src={imagem} alt={`${text.artwork.fullAlt}${titulo}`} loading="lazy" decoding="async" />
                 </section>
 
                 <section
                     className={`artwork-zooms${isAvatarArtwork(titulo) ? " artwork-zooms--top" : ""}`}
                     aria-label={`${text.artwork.detailsAlt}${titulo}`}
                 >
-                    <div><img src={imagem} alt="" /></div>
-                    <div><img src={imagem} alt="" /></div>
-                    <div><img src={imagem} alt="" /></div>
+                    <div><img src={imagem} alt="" loading="lazy" decoding="async" /></div>
+                    <div><img src={imagem} alt="" loading="lazy" decoding="async" /></div>
+                    <div><img src={imagem} alt="" loading="lazy" decoding="async" /></div>
                 </section>
 
                 <ThanksForWatching />

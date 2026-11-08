@@ -1,16 +1,27 @@
 import ReactDOM from "react-dom/client";
-import { useEffect } from "react";
+import { useLayoutEffect } from "react";
 import { BrowserRouter, useLocation } from "react-router";
 
 import App from "./App";
 import { LanguageProvider } from "./i18n/LanguageContext";
 
 function ScrollToTop() {
-  const { pathname } = useLocation();
+  const { pathname, hash, key } = useLocation();
 
-  useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-  }, [pathname]);
+  useLayoutEffect(() => {
+    window.history.scrollRestoration = "manual";
+
+    if (hash) {
+      requestAnimationFrame(() => {
+        document.getElementById(decodeURIComponent(hash.slice(1)))?.scrollIntoView({
+          behavior: "smooth",
+        });
+      });
+      return;
+    }
+
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  }, [pathname, hash, key]);
 
   return null;
 }
